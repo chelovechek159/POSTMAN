@@ -1,12 +1,12 @@
 # Postman HW_1
-
+___
 ## Create requests in Postman
 
 #### Protocol: http
 #### IP: 162.55.220.72
 #### Port: 5005
-
-#### EP_1
+___
+### EP_1
 Method: GET
 EndPoint: /get_method
 request url params: 
@@ -19,9 +19,9 @@ request url params:
         “Str”
     ]
 
-==================
+___
 
-#### EP_2
+### EP_2
 Method: POST
 EndPoint: /user_info_3
 request form data: 
@@ -36,10 +36,9 @@ request form data:
                 'family': {'children': [['Alex', 24], ['Kate', 12]],
                             'u_salary_1_5_year': salary * 4}}
 
+___
 
-==================
-
-#### EP_3
+### EP_3
 Method: GET
 EndPoint: /object_info_1
 request url params: 
@@ -53,10 +52,9 @@ request url params:
             'daily_food': weight * 0.012,
             'daily_sleep': weight * 2.5}
 
+___
 
-==================
-
-#### EP_4
+### EP_4
 Method: GET
 EndPoint: /object_info_2
 request url params: 
@@ -76,9 +74,9 @@ request url params:
             }
 
 
-==================
+___
 
-#### EP_5
+### EP_5
 Method: GET
 EndPoint: /object_info_3
 request url params: 
@@ -99,9 +97,9 @@ request url params:
             }
 
 
-==================
+___
 
-#### EP_6
+### EP_6
 Method: GET
 EndPoint: /object_info_4
 request url params: 
@@ -115,9 +113,9 @@ request url params:
             'salary': [salary, str(salary * 2), str(salary * 3)]}
 
 
-==================
+___
 
-#### EP_7
+### EP_7
 Method: POST
 EndPoint: /user_info_2
 request form data: 
