@@ -92,7 +92,7 @@ http://162.55.220.72:5005/user_info_3
 
 ### EP_3
 
-#### 1. Submit a request
+#### 1. Send a request
 
     http://162.55.220.72:5005/object_info_3
 
@@ -222,17 +222,13 @@ http://162.55.220.72:5005/object_info_4
         pm.expect(Number(respBody.salary[2])).to.eql(reqData.salary * 3);
     });
 
-#### 15-17 Create a variable `name, age, salary` in the environment
+#### 15-17. Create a variable `name, age, salary` in the environment
 https://drive.google.com/file/d/1Nq6hVjdEzabGEefdsqcYQey_eHiUfVvJ/view?usp=sharing
-#### 18. Pass the `name` variable to the environment
+#### 18-20. Pass the `name, age, salary` variable to the environment
 
     pm.environment.set("name", respBody.name);
-
-#### 19. Pass the `age` variable to the environment
-
+    
     pm.environment.set("age", respBody.age);
-
-#### 20. Pass the `salary` variable to the environment
 
     pm.environment.set("salary", respBody.salary[0]);
 
@@ -240,4 +236,117 @@ https://drive.google.com/file/d/1Nq6hVjdEzabGEefdsqcYQey_eHiUfVvJ/view?usp=shari
 
     for (let i in respBody.salary){
         console.log([i] + ': ' + respBody.salary[i])
+    }
+
+### EP_5
+
+#### 1-3. Insert the `salary, age, name` parameters from the environment into request
+
+#### 4. Send a request
+
+http://162.55.220.72:5005/user_info_2
+
+#### 5. Status code 200
+
+    pm.test("Status code is 200", function () {
+            pm.response.to.have.status(200);
+        });
+
+#### 6. Parse response body to json
+
+    let respData = pm.response.json()
+
+#### 7. Parse request.
+
+    let reqData = request.data
+
+#### 8. Check json response has start_qa_salary parameter
+
+    pm.test("Check start_qa_salary", function () {
+        pm.expect(respData).to.property("start_qa_salary");
+    });
+
+#### 9. Check that json response has parameter qa_salary_after_6_months
+
+    pm.test("Check 6_Month_qa_salary", function () {
+        pm.expect(respData).to.property("qa_salary_after_6_months");
+    });
+
+#### 10. Check json response has qa_salary_after_12_months parameter
+
+    pm.test("Check 12_month_qa_salary", function () {
+        pm.expect(respData).to.property("qa_salary_after_12_months");
+    });
+
+
+#### 11. Check json response has qa_salary_after_1.5_year parameter
+
+    pm.test("Check 1.5_month_qa_salary", function () {
+        pm.expect(respData).to.property("qa_salary_after_1.5_year");
+    });
+
+#### 12. Check json response has qa_salary_after_3.5_years parameter
+
+    pm.test("Check 3.5_month_qa_salary", function () {
+        pm.expect(respData).to.property("qa_salary_after_3.5_years");
+    });
+
+#### 13. Check json response has person parameter
+
+    pm.test("Check person", function () {
+        pm.expect(respData).to.property("person");
+    });
+
+#### 14. Check that the start_qa_salary parameter is equal to salary from request (pick salary from request)
+
+    pm.test("Check salary", function () {
+        pm.expect(respData.start_qa_salary).to.eql(Number(reqData.salary));
+    });
+
+#### 15. Check that the qa_salary_after_6_months parameter is equal to salary*2 from request (pick salary from request)
+
+    pm.test("Check 6MonthSalary", function () {
+        pm.expect(respData.qa_salary_after_6_months).to.eql(Number(reqData.salary) * 2);
+    });
+
+#### 16. Check that the qa_salary_after_12_months parameter is equal to salary*2.7 from request (pick salary from request)
+
+    pm.test("Check 12MonthSalary", function () {
+        pm.expect(respData.qa_salary_after_12_months).to.eql(reqData.salary * 2.7);
+    });
+
+#### 17. Check that the parameter qa_salary_after_1.5_year is equal to salary*3.3 from request (salary pick up from request)
+
+    pm.test("Check 1.5_yearSalary", function () {
+        pm.expect(respData["qa_salary_after_1.5_year"]).to.eql(reqData.salary * 3.3);
+    });
+
+#### 18. Check that the qa_salary_after_3.5_years parameter is equal to salary*3.8 from request (pick salary from request)
+
+    pm.test("Check 3.5_yearSalary", function () {
+        pm.expect(respData["qa_salary_after_3.5_years"]).to.eql(reqData.salary * 3.8);
+    });
+
+#### 19. Check that in the person parameter, [1] element from u_name is equal to salary from request (pick salary from request)
+
+    pm.test("Check u_name element with salary", function () {
+        pm.expect(respData.person.u_name[1]).to.eql(+reqData.salary);
+    });
+
+#### 20. Check that the u_age parameter is equal to age from request (age is taken from request)
+
+    pm.test("Check ages", function (){
+        pm.expect(respData.person.u_age).to.eql(+reqData.age)
+    })
+
+#### 21. Check that the u_salary_5_years parameter is equal to salary*4.2 from request (pick salary from request)
+
+    pm.test("Check 5 years salary", function(){
+        pm.expect(respData.person.u_salary_5_years).to.eql(reqData.salary * 4.2)
+    })
+
+#### 22. ***Write a loop that will output the list items from the person parameter to the console in order
+
+    for (i in respData.person){
+        console.log(`${i} = ${respData.person[i]}`)
     }
