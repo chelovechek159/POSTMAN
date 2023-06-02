@@ -1,4 +1,4 @@
-# Postman HW_1
+# Postman HW_2
 
 ___
 ### EP_1
@@ -223,7 +223,7 @@ http://162.55.220.72:5005/object_info_4
     });
 
 #### 15-17. Create a variable `name, age, salary` in the environment
-![Photo](https://drive.google.com/file/d/1Nq6hVjdEzabGEefdsqcYQey_eHiUfVvJ/view?usp=sharing)
+![ScreenShoot](https://github.com/chelovechek159/Images/blob/main/Screenshot%202023-06-02%20at%2019.42.33.png)
 #### 18-20. Pass the `name, age, salary` variable to the environment
 
     pm.environment.set("name", respBody.name);
