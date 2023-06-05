@@ -187,8 +187,8 @@ auth_token
         pm.expect(jsonData.daily_food).to.eql(reqst.weight * 0.012);
         pm.expect(jsonData.daily_sleep).to.eql(reqst.weight * 2.5)
     });
-
-===================
+    
+___
 
 #### EP_5 
 http://162.55.220.72:5005/get_test_user
@@ -307,6 +307,7 @@ curr_code: int
         pm.expect(tv4.validate(data2, schema)).to.be.true;
     });
 
+___
 ### ***
 ##### 1. obtain list of currencies
 ##### 2. iterate the list of currencies
